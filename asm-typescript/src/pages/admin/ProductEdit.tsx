@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SubmitHandler, useForm} from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+import { read, update } from '../../api/product';
 import { ProductType } from '../../types/product';
 
 type ProductAddProps = {
     name: string
-    onAdd: (product: ProductType) => void
+    onUpdate: (product: ProductType) => void
 }
 type FormInputs = {
     name: string,
     price: number
 }
 
-const ProductAdd = (props: ProductAddProps) => {
-    const { register, handleSubmit, formState: { errors }} = useForm<FormInputs>();
+const ProductEdit = (props: ProductAddProps) => {
+    const { id } = useParams();
+    const { register, handleSubmit, formState: { errors }, reset} = useForm<FormInputs>();
+
+    useEffect(() => {
+        const getProduct = async () => {
+            const { data } = await read(id);
+            reset(data)
+        }
+        getProduct();
+    }, [id])
+
 
     const onSumbit: SubmitHandler<FormInputs> = (data) => {
-        props.onAdd(data);
+        props.onUpdate(data);
     }
   return (
     <div>
@@ -36,4 +48,4 @@ const ProductAdd = (props: ProductAddProps) => {
   )
 }
 
-export default ProductAdd
+export default ProductEdit

@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { read } from '../api/product';
+import { ProductType } from '../types/product';
 
 type Props = {}
 
-const ProductPage = (props: Props) => {
+const ProductDetail = (props: Props) => {
+    const { id } = useParams();
+    const [product,setProduct] = useState<ProductType>();
+    useEffect(() => {
+        const getProduct = async () => {
+            const { data } = await read(id);
+            setProduct(data);
+        }
+        getProduct();
+    }, [id])
   return (
-    <div>ProductPage</div>
+    <div>{product?.name}</div>
   )
 }
 
-export default ProductPage
+export default ProductDetail
