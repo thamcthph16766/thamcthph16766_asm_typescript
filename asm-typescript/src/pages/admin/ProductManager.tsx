@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ProductType } from '../../types/product';
 
 type ProductManagerProps = {
     products: ProductType[],
-    onRemove: (id: number | string) => void
-}
+    onRemove: (id: number) => void
 
+}
 const ProductManager = (props: ProductManagerProps) => {
-    
+
   return (
-    <div>
+    <div className='pr-10'>
         <table className='table table-bordered'>
             <thead>
                 <tr>
@@ -28,13 +28,15 @@ const ProductManager = (props: ProductManagerProps) => {
                         <td>{product.name}</td>
                         <td>{product.price}</td>
                         <td>
-                            <Link to={`/admin/products/${product.id}/edit`} className="btn btn-primary">Update</Link>
-                            <button onClick={() => props.onRemove(product._id)}>Delete</button>
+                            <Link to={`/admin/products/${product._id}/edit`} className="btn btn-primary border-b-green-600 bg-green-600">Update</Link>
                         </td>
+                        <td><button className='btn btn-primary border-b-red-600 bg-red-600' onClick={() => props.onRemove(product._id)}>Delete</button></td>
                     </tr>
                 })}
             </tbody>
+            <Link to={`/admin/products/add`} className="btn btn-primary">Add</Link>
         </table>
+        
         
     </div>
   )

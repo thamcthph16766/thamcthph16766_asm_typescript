@@ -27,21 +27,24 @@ const Signup = () => {
   return (
     <div className='pt-4'>
         
-        <form onSubmit={handleSubmit(onSumbit)}>
-            <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input type="text" className="form-control" {...register('name')} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control"  {...register('email')} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input type="password" className="form-control"  {...register('password')} />
-            </div>
-            <button className="btn btn-primary">Sign-up</button>
-        </form>
+        <main className="form-signup">
+            <form  onSubmit={handleSubmit(onSumbit)}>
+                <h1 className="h3 mb-3 fw-normal pt-2 text-center">Please sign up</h1>
+                <div className="form-floating py-2">
+                <input  type="name" className="form-control"  {...register('name')} placeholder="Name" />
+                <label htmlFor="floatingInput">Last name</label>
+                </div>
+                <div className="form-floating py-2">
+                <input  type="email" className="form-control"  {...register('email')} placeholder="name@example.com" />
+                <label htmlFor="floatingInput">Email address</label>
+                </div>
+                <div className="form-floating py-2">
+                <input  type="password" className="form-control"  {...register('password')} placeholder="Password" />
+                <label htmlFor="floatingPassword">Password</label>
+                </div>
+                <button className="py-2 btn btn-primary">Sign up</button>
+            </form>
+        </main>
         <ToastContainer />
     </div>
   )

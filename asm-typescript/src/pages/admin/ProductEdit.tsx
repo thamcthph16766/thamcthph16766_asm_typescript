@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { SubmitHandler, useForm} from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { read, update } from '../../api/product';
 import { ProductType } from '../../types/product';
 
@@ -16,7 +16,7 @@ type FormInputs = {
 const ProductEdit = (props: ProductAddProps) => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset} = useForm<FormInputs>();
-
+    const navigate = useNavigate();
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);
@@ -28,7 +28,9 @@ const ProductEdit = (props: ProductAddProps) => {
 
     const onSumbit: SubmitHandler<FormInputs> = (data) => {
         props.onUpdate(data);
+        navigate("/admin/products");
     }
+
   return (
     <div>
         
@@ -41,7 +43,7 @@ const ProductEdit = (props: ProductAddProps) => {
                 <label className="form-label">Price</label>
                 <input type="number" className="form-control"  {...register('price')} />
             </div>
-            <button className="btn btn-primary">Thêm sản phẩm</button>
+            <button className="btn btn-primary border-b-green-600 bg-green-600">Update</button>
         </form>
 
     </div>

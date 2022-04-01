@@ -36,55 +36,37 @@ function App() {
       getProducts();
   }, []);
 
-  // const onHandleRemove = async (id: string) => {
-  //   try {
-  //     const { data } = await remove(id);
-  //     if(data){
-  //       toast.success("Xoa thanh cong");
-  //     }  
-  //   } catch (error) {
-  //   }
-  // }
-  // const onHandleAdd = async (product: ProductType) => {
-  //    try {
-  //       const { data } = await add(product);
-  //       if(data){
-  //         toast.success("Them thanh cong");
-  //       }  
-  //    } catch (error) {
-       
-  //    }
-  // }
-  // const onHandleUpdate = async (product: ProductType) => {
-  //   try {
-  //      const { data } = await update(product);
-  //      if(data){
-  //        toast.success("Sua thanh cong");
-  //      }  
-  //   } catch (error) {
-      
-  //   }
-//  }
-const onHandleAdd = async (product: any) => {
-  console.log('app.js', product);
-  const {data} = await add(product);
-  setProducts([...products, data]);
-}
-
-const onHandleRemove = async (id?: string) => {
-  remove(id);
-  setProducts(products.filter(item => item.id !== id));
-
-}
-
-const onHandleUpdate = async (product: ProductType) =>{
-  try {
-    const {data} = await onHandleUpdate(product);
-    setProducts(products.map(item => item.id === data.id ? product:item))
-  } catch (error) {
-    
+  const onHandleRemove = async (id: string) => {
+    try {
+      const { data } = await remove(id);
+      if(data){
+        toast.success("Xoá thành công");
+      }  
+    } catch (error) {
+      toast.error(error.response.data)
+    }
   }
-}
+  const onHandleAdd = async (product: ProductType) => {
+     try {
+        const { data } = await add(product);
+        if(data){
+          toast.success("Thêm thành công");
+        }  
+     } catch (error) {
+
+     }
+  }
+  const onHandleUpdate = async (product: ProductType) => {
+    try {
+       const { data } = await update(product);
+       setProducts(products.map(item => item._id === data._id ? product : item))
+       if(data){
+         toast.success("Sửa thành công");
+       }  
+    } catch (error) {
+
+    }
+ }
 
   return (
     <div>

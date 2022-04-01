@@ -25,10 +25,10 @@ const Signin = () => {
         }
     }
   return (
-    <div className='text-center'>
+    <div>
         <main className="form-signin">
             <form  onSubmit={handleSubmit(onSumbit)}>
-                <h1 className="h3 mb-3 fw-normal pt-2">Please sign in</h1>
+                <h1 className="h3 mb-3 fw-normal pt-2 text-center">Please sign in</h1>
                 <div className="form-floating py-2">
                 <input  type="email" className="form-control"  {...register('email')} placeholder="name@example.com" />
                 <label htmlFor="floatingInput">Email address</label>
@@ -37,7 +37,7 @@ const Signin = () => {
                 <input  type="password" className="form-control"  {...register('password')} placeholder="Password" />
                 <label htmlFor="floatingPassword">Password</label>
                 </div>
-                <button className="py-2 w-30 btn btn-lg btn btn-primary">Sign in</button>
+                <button className="py-2 btn btn-primary">Sign in</button>
             </form>
         </main>
         <ToastContainer />

@@ -5,70 +5,61 @@ type Props = {}
 
 const AdminLayout = (props: Props) => {
   return (
-    <div>
-        <header>
-            Admin
+    <div className='pt-2'>
+        <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow py-2">
+            <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Trang chủ</a>
+            <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
+            <a href="#"><button type="button" className="btn btn-outline-light me-2 px-4">Search</button></a>
         </header>
-        <div className="row">
-            <div className="col-2">
-                <aside>
+
+        <div className="row pt-6">
+            <div className="col-3">
+           <aside>
                 <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width: 280}}>
-                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <svg className="bi me-2" width={40} height={32}><use xlinkHref="#bootstrap" /></svg>
-                    <span className="fs-4">Sidebar</span>
-                    </a>
-                    <hr />
+                    
                     <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item">
-                        <a href="#" className="nav-link active" aria-current="page">
-                        <svg className="bi me-2" width={16} height={16}><use xlinkHref="#home" /></svg>
-                        Home
+                        <li className="nav-item">
+                        <a href="/" className="nav-link active" aria-current="page">
+                            Home
                         </a>
-                    </li>
-                    <li>
+                        </li>
+                        <li>
+                        <a href="/admin/products" className="nav-link text-white">
+                            Products
+                        </a>
+                        </li>
+                        <li>
+                        <a href="/signup" className="nav-link text-white">
+                            Sign-up
+                        </a>
+                        </li>
+                        <li>
+                        <a href="/signin" className="nav-link text-white">
+                            Sign-in
+                        </a>
+                        </li>
+                        <li>
                         <a href="#" className="nav-link text-white">
-                        <svg className="bi me-2" width={16} height={16}><use xlinkHref="#speedometer2" /></svg>
-                        Dashboard
+                            Users
                         </a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-link text-white">
-                        <svg className="bi me-2" width={16} height={16}><use xlinkHref="#table" /></svg>
-                        Orders
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-link text-white">
-                        <svg className="bi me-2" width={16} height={16}><use xlinkHref="#grid" /></svg>
-                        Products
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="nav-link text-white">
-                        <svg className="bi me-2" width={16} height={16}><use xlinkHref="#people-circle" /></svg>
-                        Customers
-                        </a>
-                    </li>
+                        </li>
                     </ul>
                     <hr />
                     <div className="dropdown">
-                    <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png"  width={32} height={32} className="rounded-circle me-2" />
-                        <strong>mdo</strong>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a className="dropdown-item" href="#">New project...</a></li>
-                        <li><a className="dropdown-item" href="#">Settings</a></li>
-                        <li><a className="dropdown-item" href="#">Profile</a></li>
-                        <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
+                        <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" width={32} height={32} className="rounded-circle me-2" />
+                        <strong>thamcthph16766</strong>
+                        </a>
                     </div>
-                </div>  
+                    </div>
+
                 </aside>
-    
+
             </div> 
-            <div className="col-10">
+            <div className="col-9">
                 <main>
                     <Outlet/>
                 </main>    
