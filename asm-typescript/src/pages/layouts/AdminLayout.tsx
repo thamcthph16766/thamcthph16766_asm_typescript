@@ -22,7 +22,7 @@ const AdminLayout = (props: Props) => {
                     
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
-                        <a href="/" className="nav-link active" aria-current="page">
+                        <a href="/admin" className="nav-link active" aria-current="page">
                             Home
                         </a>
                         </li>

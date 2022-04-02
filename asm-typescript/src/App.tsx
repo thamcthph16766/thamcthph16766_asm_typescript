@@ -45,10 +45,12 @@ function App() {
     } catch (error) {
       toast.error(error.response.data)
     }
+    setProducts(products.filter(item => item._id !== id));
   }
   const onHandleAdd = async (product: ProductType) => {
      try {
         const { data } = await add(product);
+        setProducts([...products, data]);
         if(data){
           toast.success("Thêm thành công");
         }  
